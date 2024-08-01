@@ -1,0 +1,11 @@
+.primary_btn {
+  @apply bg-app-blue min-w-max text-app-white px-3 py-2 flex items-center justify-center rounded-radius-rounded;
+}
+
+.primary_btn:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+.secondary_btn {
+  @apply min-w-max px-3 py-2 flex items-center justify-center border rounded-radius-rounded;
+}

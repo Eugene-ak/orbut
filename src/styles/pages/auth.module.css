@@ -1,0 +1,55 @@
+.main {
+  @apply w-full h-screen grid grid-cols-2 overflow-hidden;
+}
+
+.section {
+  @apply w-full p-8 flex flex-col items-center justify-center;
+}
+
+.section:last-child {
+  @apply py-16;
+}
+
+.image {
+  @apply h-[90vh] w-full rounded-radius-medium;
+}
+
+.header {
+  @apply w-full flex items-center justify-between gap-4;
+}
+
+.header > h1 {
+  @apply text-2xl text-logo-color font-logo;
+}
+
+.header > p {
+  @apply ml-auto;
+}
+
+.sign_up_btn {
+  @apply text-app-blue;
+}
+
+.form_wrapper {
+  @apply w-[60%] min-w-[20rem] h-full flex flex-col items-center justify-center gap-2;
+}
+
+.form_wrapper > h1 {
+  @apply text-[2.5rem] font-semibold;
+}
+
+.form_wrapper > p {
+  @apply text-lg text-app-gray;
+}
+
+.form_wrapper > a {
+  @apply text-app-blue;
+}
+
+.form {
+  @apply w-full my-4 flex flex-col items-center gap-4;
+}
+
+.submit_btn {
+  @apply w-full mt-4;
+}

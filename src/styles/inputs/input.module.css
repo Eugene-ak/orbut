@@ -1,0 +1,15 @@
+.input_wrapper {
+  @apply w-full relative;
+}
+
+.input_wrapper > label {
+  @apply absolute top-1/4 left-3;
+}
+
+.active_label {
+  @apply -translate-y-2 transition-all duration-300 text-[.6rem] text-app-blue;
+}
+
+.input_wrapper > input {
+  @apply w-full p-3 pb-2 border rounded-radius-min text-base focus-visible:border-app-blue outline-none;
+}
