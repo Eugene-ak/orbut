@@ -1,7 +1,7 @@
 import SideImage from "/images/happy-friends-looking-out-window.jpg";
 import LoginForm from "../components/screen-components/LoginForm";
 import { SecondaryButton } from "../components/buttons/Buttons";
-import AuthHeader from "../components/screen-components/AuthHeader";
+import { AuthHeader } from "../components/screen-components/Headers";
 import { useState } from "react";
 import SignupForm from "../components/screen-components/SignupForm";
 import pageStyles from "../styles/pages/auth.module.css";

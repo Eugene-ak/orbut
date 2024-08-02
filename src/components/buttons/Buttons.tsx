@@ -1,4 +1,8 @@
-import { PrimaryButtonProps, SecondaryButtonProps } from "../../types/buttons";
+import {
+  ActionButtonProps,
+  PrimaryButtonProps,
+  SecondaryButtonProps,
+} from "../../types/buttons";
 import buttonStyles from "../../styles/buttons/button.module.css";
 
 export function PrimaryButton({
@@ -35,6 +39,21 @@ export function SecondaryButton({
       disabled={disabled}
     >
       {label}
+    </button>
+  );
+}
+
+export function ActionButton({
+  children,
+  customBtnStyles,
+  clickEvt,
+}: ActionButtonProps) {
+  return (
+    <button
+      className={`${buttonStyles.action_btn} ${customBtnStyles}`}
+      onClick={clickEvt}
+    >
+      {children}
     </button>
   );
 }

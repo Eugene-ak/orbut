@@ -12,4 +12,10 @@ export type SecondaryButtonProps = {
   customBtnStyles?: string;
   clickEvt?: VoidFunction;
   disabled?: boolean;
-}
+};
+
+export type ActionButtonProps = {
+  children: React.ReactNode;
+  customBtnStyles?: string;
+  clickEvt?: VoidFunction;
+};

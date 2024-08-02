@@ -14,10 +14,13 @@ export default {
         "app-red": "#B20000",
         "app-green": "#1BC100",
         "app-gray": "#909090",
-        "gradient": "linear-gradient(to right, #DF1EFF, #FFC93E)",
         "primary-font-color": "#000000",
         "secondary-font-color": "#262626",
         "dark-shade": "#3A3A3A"
+      },
+      gradientColorStops: {
+        "purple-start": "#DF1EFF",
+        "orange-stop": "#FFC93E"
       },
       fontFamily: {
         "logo": ["Krona One", "sans-serif"],

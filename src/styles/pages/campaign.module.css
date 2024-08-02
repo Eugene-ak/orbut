@@ -1,0 +1,47 @@
+.section {
+  @apply w-full min-h-[85vh] text-dark-shade overflow-y-auto;
+}
+
+.section > h1 {
+  @apply text-[2.5rem] font-semibold;
+}
+
+.section > h2 {
+  @apply w-max text-[2.5rem] font-semibold bg-gradient-to-r from-purple-start to-orange-stop bg-clip-text text-transparent;
+}
+
+.content {
+  @apply w-full flex flex-col gap-4;
+}
+
+.btn_container {
+  @apply w-full flex items-center justify-end gap-4;
+}
+
+.action_btn {
+  @apply px-2 py-2 border-2 border-white-shade rounded-radius-min;
+}
+
+.summary_card_container {
+  @apply w-full grid grid-cols-3 gap-8;
+}
+
+.campaign_details {
+  @apply w-full my-4 grid grid-cols-3 gap-x-8 gap-y-4;
+}
+
+.campaign_header {
+  @apply w-full col-span-3 flex items-center justify-between;
+}
+
+.campaign_header > h3 {
+  @apply text-[1.625rem] font-semibold;
+}
+
+.campaign_header > span {
+  @apply w-max flex items-center gap-2 border-b border-black;
+}
+
+.add_btn {
+  @apply w-full p-4 border border-dashed rounded-radius-min;
+}

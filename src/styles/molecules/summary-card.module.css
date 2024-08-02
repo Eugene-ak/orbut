@@ -1,0 +1,27 @@
+.card {
+  @apply w-full p-4 border rounded-radius-min;
+}
+
+.card > h6 {
+  @apply mb-16;
+}
+
+.card > p {
+  @apply text-sm text-app-gray;
+}
+
+.figures {
+  @apply w-full flex items-center gap-2;
+}
+
+.figures > span {
+  @apply w-max flex items-center;
+}
+
+.figures > span:first-child {
+  @apply text-2xl text-black font-semibold;
+}
+
+.figures > span:last-child {
+  @apply p-1 rounded-radius-min;
+}

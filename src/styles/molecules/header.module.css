@@ -1,0 +1,19 @@
+.main_header {
+  @apply w-full h-[15vh] flex items-center justify-between;
+}
+
+.main_header > h1 {
+  @apply text-2xl;
+}
+
+.user_container {
+  @apply flex items-center gap-4;
+}
+
+.user_container > span {
+  @apply h-12 w-12 flex items-center justify-center border rounded-[50%] overflow-hidden;
+}
+
+.user_container svg {
+  @apply w-6 h-auto;
+}
