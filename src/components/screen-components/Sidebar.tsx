@@ -4,48 +4,48 @@ import { BsChat } from "react-icons/bs";
 import { HiOutlineSupport } from "react-icons/hi";
 import { AiOutlineDollar } from "react-icons/ai";
 import { IoBriefcaseOutline } from "react-icons/io5";
+import { TbLayoutSidebarLeftCollapse } from "react-icons/tb";
 import sidebarStyles from "../../styles/molecules/sidebar.module.css";
 import NavItem from "./NavItem";
-import React from "react";
 
 const navs = [
   {
     title: "Dashboard",
-    icon: <AiOutlineHome />
+    icon: <AiOutlineHome />,
   },
   {
     title: "Campaigns",
-    icon: <MdOutlineCampaign />
+    icon: <MdOutlineCampaign />,
   },
   {
     title: "Chat",
-    icon: <BsChat />
+    icon: <BsChat />,
   },
   {
     title: "Support Center",
-    icon: <HiOutlineSupport />
+    icon: <HiOutlineSupport />,
   },
   {
     title: "Leads",
-    icon: <AiOutlineDollar />
+    icon: <AiOutlineDollar />,
   },
   {
     title: "Archive",
-    icon: <IoBriefcaseOutline />
-  }
+    icon: <IoBriefcaseOutline />,
+  },
 ];
 
 export default function Sidebar() {
   return (
     <aside className={sidebarStyles.aside}>
-      <div>
+      <div className={sidebarStyles.head}>
         <h1>Orbut</h1>
-        <p>Logout</p>
+        <TbLayoutSidebarLeftCollapse title="Collapse sidebar" />
       </div>
-      <nav>
+      <nav className={sidebarStyles.nav}>
         <ul>
-          {navs.map((item: {title: string, icon: React.ReactNode}) => (
-            <NavItem title={item.title} icon={item.icon} />
+          {navs.map((item: { title: string; icon: React.ReactNode }) => (
+            <NavItem title={item.title} icon={item.icon} key={item.title} />
           ))}
         </ul>
       </nav>

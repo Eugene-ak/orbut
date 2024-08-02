@@ -1,3 +1,11 @@
 .item {
-  @apply w-full p-4 grid grid-cols-auto-2;
+  @apply w-full p-4 grid grid-cols-auto-2 gap-2 rounded-radius-min hover:text-black hover:bg-white-shade;
+}
+
+.item > span {
+  @apply w-6 h-auto;
+}
+
+.item > span > svg {
+  @apply w-full h-full;
 }
