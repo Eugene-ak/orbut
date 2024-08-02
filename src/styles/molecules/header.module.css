@@ -1,5 +1,5 @@
 .main_header {
-  @apply w-full h-[15vh] flex items-center justify-between;
+  @apply w-full h-[15vh] px-8 flex items-center justify-between;
 }
 
 .main_header > h1 {

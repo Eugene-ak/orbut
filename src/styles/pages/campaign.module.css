@@ -1,5 +1,5 @@
 .section {
-  @apply w-full min-h-[85vh] text-dark-shade overflow-y-auto;
+  @apply w-full min-h-[85vh] h-[85vh] px-8 text-dark-shade overflow-y-auto;
 }
 
 .section > h1 {
@@ -40,6 +40,18 @@
 
 .campaign_header > span {
   @apply w-max flex items-center gap-2 border-b border-black;
+}
+
+.campaign_list {
+  @apply w-full flex flex-col gap-4;
+}
+
+.campaign_list > div:first-child {
+  @apply w-max text-sm flex items-center gap-2;
+}
+
+.campaign_list > div:first-child > span {
+  @apply bg-white-shade px-2 py-1 rounded-[5px];
 }
 
 .add_btn {

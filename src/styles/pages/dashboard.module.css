@@ -3,5 +3,5 @@
 }
 
 .section {
-  @apply w-full px-8 h-screen overflow-hidden;
+  @apply w-full h-screen overflow-hidden;
 }

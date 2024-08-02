@@ -1,0 +1,15 @@
+.modal {
+  @apply max-w-[37.75rem] w-[37.75rem] h-max p-8 bg-white flex flex-col gap-6 rounded-radius-medium;
+}
+
+.modal_header {
+  @apply w-full flex items-center justify-between;
+}
+
+.modal_footer {
+  @apply w-full flex items-center gap-4;
+}
+
+.modal_footer > * {
+  @apply px-8;
+}

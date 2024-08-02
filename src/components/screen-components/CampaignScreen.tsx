@@ -4,8 +4,17 @@ import { RxArrowTopRight } from "react-icons/rx";
 import { GoPlusCircle } from "react-icons/go";
 import pageStyles from "../../styles/pages/campaign.module.css";
 import SummaryCard from "./SummaryCard";
+import CampaignCard from "./CampaignCard";
+import { useState } from "react";
+import { AddModal } from "../modals/Modal";
 
 export default function CampaignScreen() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <section className={pageStyles.section}>
       <h1>Your total revenue</h1>
@@ -50,18 +59,41 @@ export default function CampaignScreen() {
             <RxArrowTopRight />
           </span>
         </div>
-        <div>
-          <h6>Draft</h6>
-          <ActionButton customBtnStyles={pageStyles.add_btn}>
+        <div className={pageStyles.campaign_list}>
+          <div>
+            <h6>Draft</h6>
+            <span>1</span>
+          </div>
+          <CampaignCard />
+          <ActionButton
+            customBtnStyles={pageStyles.add_btn}
+            clickEvt={handleModal}
+          >
             <GoPlusCircle />
             <span>Add Campaign</span>
           </ActionButton>
+          {isModalOpen && (
+            <AddModal
+              onClose={handleModal}
+              onCancel={handleModal}
+              onSubmit={handleModal}
+            />
+          )}
         </div>
-        <div>
-          <h6>In progress</h6>
+        <div className={pageStyles.campaign_list}>
+          <div>
+            <h6>In progress</h6>
+            <span>2</span>
+          </div>
+          <CampaignCard />
+          <CampaignCard />
         </div>
-        <div>
-          <h6>Complete</h6>
+        <div className={pageStyles.campaign_list}>
+          <div>
+            <h6>Complete</h6>
+            <span>1</span>
+          </div>
+          <CampaignCard />
         </div>
       </div>
     </section>

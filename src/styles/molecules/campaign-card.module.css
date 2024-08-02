@@ -1,0 +1,19 @@
+.card {
+  @apply w-full p-4 flex flex-col gap-2 border rounded-radius-min;
+}
+
+.card > div:nth-child(1) {
+  @apply w-full flex items-center justify-between gap-2;
+}
+
+.card > div:nth-child(1) > img {
+  @apply w-32;
+}
+
+.card > div:nth-child(3), .card > div:last-child {
+  @apply text-sm text-app-gray;
+}
+
+.card > div:nth-child(4) {
+  @apply w-full h-2 bg-app-green rounded-full;
+}
