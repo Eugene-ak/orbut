@@ -10,6 +10,8 @@
   @apply -translate-y-2 transition-all duration-300 text-[.6rem] text-app-blue;
 }
 
-.input_wrapper > input {
+.input_wrapper > input,
+.input_wrapper > select,
+.input_wrapper > textarea {
   @apply w-full p-3 pb-2 border rounded-radius-min text-base focus-visible:border-app-blue outline-none;
 }

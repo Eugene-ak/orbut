@@ -2,8 +2,20 @@
   @apply max-w-[37.75rem] w-[37.75rem] h-max p-8 bg-white flex flex-col gap-6 rounded-radius-medium;
 }
 
+.modal > p {
+  @apply text-app-gray text-sm;
+}
+
 .modal_header {
   @apply w-full flex items-center justify-between;
+}
+
+.modal_header > h1 {
+  @apply text-[1.75rem] font-semibold;
+}
+
+.campaign_form {
+  @apply w-full flex flex-col gap-6;
 }
 
 .modal_footer {
