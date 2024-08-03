@@ -3,6 +3,10 @@
 }
 
 .input_wrapper > label {
+  @apply absolute top-[10px] left-3;
+}
+
+.inactive_label {
   @apply absolute top-1/4 left-3;
 }
 
@@ -14,4 +18,8 @@
 .input_wrapper > select,
 .input_wrapper > textarea {
   @apply w-full p-3 pb-2 border rounded-radius-min text-base focus-visible:border-app-blue outline-none;
+}
+
+.input_wrapper > p {
+  @apply text-xs text-app-red;
 }

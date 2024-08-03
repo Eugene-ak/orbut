@@ -20,6 +20,19 @@ svg {
   @apply w-full flex gap-6;
 }
 
+
+.error_field {
+  @apply border-app-red;
+}
+
+.error_field > label {
+  @apply text-app-red;
+}
+
+.error_field > input, .error_field > select, .error_field > textarea {
+  @apply border-app-red focus-visible:border-app-red;
+}
+
 #modal-overlay {
   @apply w-full h-screen absolute top-0 left-0 bg-black bg-opacity-50 flex items-center justify-center;
 }
