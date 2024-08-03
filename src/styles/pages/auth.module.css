@@ -1,9 +1,13 @@
 .main {
-  @apply w-full h-screen grid grid-cols-2 overflow-hidden;
+  @apply w-full h-screen flex justify-center lg:grid grid-cols-2 overflow-hidden;
 }
 
 .section {
-  @apply w-full p-8 flex flex-col items-center justify-center;
+  @apply w-full p-4 flex flex-col items-center justify-center;
+}
+
+.section:first-child {
+  @apply hidden lg:flex;
 }
 
 .section:last-child {
@@ -11,11 +15,11 @@
 }
 
 .image {
-  @apply h-[90vh] w-full rounded-radius-medium;
+  @apply h-[90vh] w-full max-w-[60rem] rounded-radius-medium;
 }
 
 .header {
-  @apply w-full flex items-center justify-between gap-4;
+  @apply w-full flex items-center justify-between gap-4 flex-wrap;
 }
 
 .header > h1 {
@@ -27,11 +31,11 @@
 }
 
 .sign_up_btn {
-  @apply text-app-blue;
+  @apply w-max text-app-blue ml-auto sm:ml-0;
 }
 
 .form_wrapper {
-  @apply w-[60%] min-w-[20rem] h-full flex flex-col items-center justify-center gap-2;
+  @apply w-full min-w-[15rem] max-w-[25rem] h-full flex flex-col items-center justify-center gap-2;
 }
 
 .form_wrapper > h1 {
@@ -39,7 +43,7 @@
 }
 
 .form_wrapper > p {
-  @apply text-lg text-app-gray;
+  @apply text-lg text-app-gray text-center;
 }
 
 .form_wrapper > a {

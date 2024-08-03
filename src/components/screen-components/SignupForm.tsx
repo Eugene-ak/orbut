@@ -5,35 +5,55 @@ import RegularInputs, { PasswordInputs } from "../inputs/Inputs";
 import { useFormik } from "formik";
 import { SignupSchema } from "../../schemas";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function SignupForm({
   customWrapperStyles,
   customFormStyles,
   submitBtnStyles,
 }: SignupFormProps) {
+  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
 
-  const { values, errors, touched, handleChange, handleBlur, handleSubmit } = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      name: "",
-      msisdn: "",
-    },
-    validationSchema: SignupSchema,
-    onSubmit: async (values) => {
-      const response = await axios.post("https://test.quups.app/api/create-account", values);
-      console.log(response.data.message);
-    },
-  });
+  const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
+    useFormik({
+      initialValues: {
+        email: "",
+        password: "",
+        name: "",
+        msisdn: "",
+      },
+      validationSchema: SignupSchema,
+      onSubmit: async (values) => {
+        try {
+          const response = await axios.post(
+            "https://test.quups.app/api/create-account",
+            values
+          );
+          if (response.status === 200) {
+            toast.success("Account created successfully");
+            navigate("/dashboard");
+          } else {
+            toast.error("Something went wrong. Please retry");
+          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          console.log(error);
+          toast.error(error.response.data.message);
+        }
+      },
+    });
 
   useEffect(() => {
-    if (values.email !== "" && values.password !== "" && values.name !== "" && values.msisdn !== "") {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
+    if (touched.email || touched.password || touched.name || touched.msisdn) {
+      if (!errors.email && !errors.password && !errors.name && !errors.msisdn) {
+        setIsDisabled(false);
+      } else {
+        setIsDisabled(true);
+      }
     }
-  }, [values]);
+  }, [errors, touched]);
 
   return (
     <div className={`${customWrapperStyles}`}>
@@ -51,7 +71,7 @@ export default function SignupForm({
           customStyles={errors.email && touched.email ? "error_field" : ""}
           errorMsg={errors.email && touched.email ? errors.email : ""}
           required
-          />
+        />
         <PasswordInputs
           label="Password"
           id="password"
@@ -59,10 +79,12 @@ export default function SignupForm({
           value={values.password}
           onChangeEvt={handleChange}
           onBlurEvt={handleBlur}
-          customStyles={errors.password && touched.password ? "error_field" : ""}
+          customStyles={
+            errors.password && touched.password ? "error_field" : ""
+          }
           errorMsg={errors.password && touched.password ? errors.password : ""}
           required
-          />
+        />
         <RegularInputs
           label="Name"
           type="text"
@@ -74,7 +96,7 @@ export default function SignupForm({
           customStyles={errors.name && touched.name ? "error_field" : ""}
           errorMsg={errors.name && touched.name ? errors.name : ""}
           required
-          />
+        />
         <RegularInputs
           label="Phone"
           type="tel"
@@ -86,7 +108,7 @@ export default function SignupForm({
           customStyles={errors.msisdn && touched.msisdn ? "error_field" : ""}
           errorMsg={errors.msisdn && touched.msisdn ? errors.msisdn : ""}
           required
-          />
+        />
         <PrimaryButton
           label="Signup"
           type="submit"

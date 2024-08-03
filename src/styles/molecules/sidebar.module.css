@@ -1,5 +1,5 @@
 .aside {
-  @apply min-w-[22rem] w-[22rem] h-full text-dark-shade border-r-4;
+  @apply min-w-[15rem] max-w-[20rem] w-full h-full text-dark-shade border-r-4;
 }
 
 .head {

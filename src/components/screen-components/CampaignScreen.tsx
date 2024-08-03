@@ -60,40 +60,46 @@ export default function CampaignScreen() {
           </span>
         </div>
         <div className={pageStyles.campaign_list}>
-          <div>
-            <h6>Draft</h6>
-            <span>1</span>
+          <div className={pageStyles.list_group}>
+            <div>
+              <h6>Draft</h6>
+              <span>1</span>
+            </div>
+            <CampaignCard />
+            <ActionButton
+              customBtnStyles={pageStyles.add_btn}
+              clickEvt={handleModal}
+            >
+              <GoPlusCircle />
+              <span>Add Campaign</span>
+            </ActionButton>
+            {isModalOpen && (
+              <AddModal
+                onClose={handleModal}
+                onCancel={handleModal}
+                onSubmit={handleModal}
+              />
+            )}
           </div>
-          <CampaignCard />
-          <ActionButton
-            customBtnStyles={pageStyles.add_btn}
-            clickEvt={handleModal}
-          >
-            <GoPlusCircle />
-            <span>Add Campaign</span>
-          </ActionButton>
-          {isModalOpen && (
-            <AddModal
-              onClose={handleModal}
-              onCancel={handleModal}
-              onSubmit={handleModal}
-            />
-          )}
-        </div>
-        <div className={pageStyles.campaign_list}>
-          <div>
-            <h6>In progress</h6>
-            <span>2</span>
+          {/* </div> */}
+          <div className={pageStyles.list_group}>
+            {/* <div className={pageStyles.campaign_list}> */}
+            <div>
+              <h6>In progress</h6>
+              <span>2</span>
+            </div>
+            <CampaignCard />
+            <CampaignCard />
           </div>
-          <CampaignCard />
-          <CampaignCard />
-        </div>
-        <div className={pageStyles.campaign_list}>
-          <div>
-            <h6>Complete</h6>
-            <span>1</span>
+          {/* </div> */}
+          <div className={pageStyles.list_group}>
+            {/* <div className={pageStyles.campaign_list}> */}
+            <div>
+              <h6>Complete</h6>
+              <span>1</span>
+            </div>
+            <CampaignCard />
           </div>
-          <CampaignCard />
         </div>
       </div>
     </section>

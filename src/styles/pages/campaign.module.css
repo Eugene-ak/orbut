@@ -23,11 +23,11 @@
 }
 
 .summary_card_container {
-  @apply w-full grid grid-cols-3 gap-8;
+  @apply w-full flex flex-wrap /* grid */ grid-cols-3 gap-8;
 }
 
 .campaign_details {
-  @apply w-full my-4 grid grid-cols-3 gap-x-8 gap-y-4;
+  @apply w-full my-4 /* grid grid-cols-3 gap-x-8 gap-y-4 */;
 }
 
 .campaign_header {
@@ -43,14 +43,18 @@
 }
 
 .campaign_list {
-  @apply w-full flex flex-col gap-4;
+  @apply w-full flex /* flex-col */ flex-row flex-wrap items-start gap-4;
 }
 
-.campaign_list > div:first-child {
+.list_group {
+  @apply min-w-[15rem] w-[30%] max-w-[22rem] flex-grow flex flex-col gap-4;
+}
+
+.list_group > div:first-child {
   @apply w-max text-sm flex items-center gap-2;
 }
 
-.campaign_list > div:first-child > span {
+.list_group > div:first-child > span {
   @apply bg-white-shade px-2 py-1 rounded-[5px];
 }
 

@@ -5,12 +5,15 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LoginSchema } from "../../schemas";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginForm({
   customWrapperStyles,
   customFormStyles,
   submitBtnStyles,
 }: LoginFormProps) {
+  const navigate = useNavigate();
   const [isDisabled, setIsDisabled] = useState(true);
 
   const { values, errors, touched, handleChange, handleBlur, handleSubmit } =
@@ -21,21 +24,34 @@ export default function LoginForm({
       },
       validationSchema: LoginSchema,
       onSubmit: async (values) => {
-        const response = await axios.post(
-          "https://test.quups.app/api/signin",
-          values
-        );
-        console.log(response.data.message);
+        try {
+          const response = await axios.post(
+            "https://test.quups.app/api/signin",
+            values
+          );
+          if (response.status === 200) {
+            localStorage.setItem("jwt", response.data.data.access_token);
+            toast.success("Login successful");
+            navigate("/dashboard");
+          } else {
+            toast.error("Something went wrong. Please retry");
+          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+        }
       },
     });
 
   useEffect(() => {
-    if (values.email !== "" && values.password !== "") {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
+    if (touched.email || touched.password) {
+      if (!errors || (!errors.email && !errors.password)) {
+        setIsDisabled(false);
+      } else {
+        setIsDisabled(true);
+      }
     }
-  }, [values]);
+  }, [errors, touched]);
 
   return (
     <div className={`${customWrapperStyles}`}>

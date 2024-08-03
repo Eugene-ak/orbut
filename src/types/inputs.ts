@@ -3,7 +3,7 @@ export type RegularInputProps = {
   id: string;
   type: string;
   name: string;
-  value: string;
+  value: unknown;
   placeholder?: string;
   onChangeEvt: React.ChangeEventHandler<HTMLInputElement> | undefined;
   onBlurEvt?: React.FocusEventHandler<HTMLInputElement> | undefined;

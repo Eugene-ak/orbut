@@ -1,5 +1,5 @@
 .card {
-  @apply w-full p-4 flex flex-col gap-2 border rounded-radius-min;
+  @apply w-full min-w-full p-4 flex flex-col gap-2 border rounded-radius-min;
 }
 
 .card > div:nth-child(1) {

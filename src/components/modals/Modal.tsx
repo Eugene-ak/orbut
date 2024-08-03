@@ -1,15 +1,14 @@
 import { createPortal } from "react-dom";
 import { IoCloseSharp } from "react-icons/io5";
 import modalStyles from "../../styles/modals/modal.module.css";
-import { PrimaryButton, SecondaryButton } from "../buttons/Buttons";
-import { CreateCampaignForm, EditCampaignForm } from "../screen-components/CampaignForm";
+// import { PrimaryButton, SecondaryButton } from "../buttons/Buttons";
+import CreateCampaignForm from "../screen-components/CreateCampaignForm";
+import EditCampaignForm from "../screen-components/EditCampaignForm";
 
 export function Modal({
   title,
   children,
   onClose,
-  onCancel,
-  onSubmit,
 }: {
   title: string;
   children: React.ReactNode;
@@ -25,14 +24,6 @@ export function Modal({
           <IoCloseSharp onClick={onClose} title="Close" />
         </div>
         {children}
-        <div className={modalStyles.modal_footer}>
-          <SecondaryButton label="Cancel" type="button" clickEvt={onCancel} />
-          <PrimaryButton
-            label="Create Campaign"
-            type="submit"
-            clickEvt={onSubmit}
-          />
-        </div>
       </div>
     </div>,
     document.getElementById("modal-portal")!
