@@ -81,9 +81,7 @@ export default function CampaignScreen() {
               />
             )}
           </div>
-          {/* </div> */}
           <div className={pageStyles.list_group}>
-            {/* <div className={pageStyles.campaign_list}> */}
             <div>
               <h6>In progress</h6>
               <span>2</span>
@@ -91,9 +89,7 @@ export default function CampaignScreen() {
             <CampaignCard />
             <CampaignCard />
           </div>
-          {/* </div> */}
           <div className={pageStyles.list_group}>
-            {/* <div className={pageStyles.campaign_list}> */}
             <div>
               <h6>Complete</h6>
               <span>1</span>

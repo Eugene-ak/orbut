@@ -5,6 +5,7 @@ import axios from "axios";
 import { CampaignSchema } from "../../schemas";
 import modalStyles from "../../styles/modals/modal.module.css";
 import { PrimaryButton, SecondaryButton } from "../buttons/Buttons";
+import { toast } from "react-toastify";
 
 export default function EditCampaignForm({
   customFormStyles,
@@ -25,28 +26,52 @@ export default function EditCampaignForm({
       },
       validationSchema: CampaignSchema,
       onSubmit: async (values) => {
-        const response = await axios.post(
-          "https://test.quups.app/api/create-account",
-          values
-        );
-        console.log(response.data.message);
+        try {
+          const response = await axios.post(
+            "https://test.quups.app/api/campaigns",
+            values,
+            {
+              method: "PUT",
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+              },
+            }
+          );
+          if (response.status === 200) {
+            toast.success("Campaign updated successfully");
+          } else {
+            toast.error("Something went wrong. Please retry");
+          }
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+        }
       },
     });
 
   useEffect(() => {
     if (
-      values.name !== "" &&
-      values.description !== "" &&
-      values.start_date !== "" &&
-      values.end_date !== "" &&
-      values.banner_url !== "" &&
-      values.status !== ""
+      touched.name ||
+      touched.description ||
+      touched.start_date ||
+      touched.end_date ||
+      touched.banner_url ||
+      touched.status
     ) {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
+      if (
+        !errors.name &&
+        !errors.description &&
+        !errors.start_date &&
+        !errors.end_date &&
+        !errors.banner_url &&
+        !errors.status
+      ) {
+        setIsDisabled(false);
+      } else {
+        setIsDisabled(true);
+      }
     }
-  }, [values]);
+  }, [errors, touched]);
 
   return (
     <form className={customFormStyles}>
@@ -81,7 +106,7 @@ export default function EditCampaignForm({
         <RegularInputs
           placeholder="Enter start date"
           id="start-date"
-          type="date"
+          type="datetime-local"
           name="start_date"
           value={values.start_date}
           onChangeEvt={handleChange}
@@ -97,7 +122,7 @@ export default function EditCampaignForm({
         <RegularInputs
           placeholder="Enter end date"
           id="end-date"
-          type="date"
+          type="datetime-local"
           name="end_date"
           value={values.end_date}
           onChangeEvt={handleChange}

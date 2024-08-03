@@ -23,11 +23,11 @@
 }
 
 .summary_card_container {
-  @apply w-full flex flex-wrap /* grid */ grid-cols-3 gap-8;
+  @apply w-full flex flex-wrap gap-8;
 }
 
 .campaign_details {
-  @apply w-full my-4 /* grid grid-cols-3 gap-x-8 gap-y-4 */;
+  @apply w-full my-4;
 }
 
 .campaign_header {
@@ -43,7 +43,7 @@
 }
 
 .campaign_list {
-  @apply w-full flex /* flex-col */ flex-row flex-wrap items-start gap-4;
+  @apply w-full flex flex-row flex-wrap items-start gap-4;
 }
 
 .list_group {

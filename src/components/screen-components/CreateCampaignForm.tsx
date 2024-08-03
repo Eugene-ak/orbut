@@ -5,6 +5,7 @@ import axios from "axios";
 import { CampaignSchema } from "../../schemas";
 import modalStyles from "../../styles/modals/modal.module.css";
 import { PrimaryButton, SecondaryButton } from "../buttons/Buttons";
+import { toast } from "react-toastify";
 
 export default function CreateCampaignForm({
   customFormStyles,
@@ -25,40 +26,51 @@ export default function CreateCampaignForm({
       },
       validationSchema: CampaignSchema,
       onSubmit: async (values) => {
-        console.log("Values", values);
-        const response = await axios.post(
-          "https://test.quups.app/api/campaigns",
-          values,
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
-            },
+        try {
+          const response = await axios.post(
+            "https://test.quups.app/api/campaigns",
+            values,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+              },
+            }
+          );
+          if (response.status === 200) {
+            toast.success("New campaign created");
+          } else {
+            toast.error("Something went wrong. Please retry");
           }
-        );
-        console.log(response.data.message);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+          toast.error(error.response.data.message);
+        }
       },
     });
 
-  // const formatDate = (date: string) => {
-  //   const formattedDate = new Date(date);
-  //   formattedDate.toISOString();
-  //   return formattedDate;
-  // };
-
   useEffect(() => {
     if (
-      !errors.name &&
-      !errors.description &&
-      !errors.start_date &&
-      !errors.end_date &&
-      !errors.banner_url &&
-      !errors.status
+      touched.name ||
+      touched.description ||
+      touched.start_date ||
+      touched.end_date ||
+      touched.banner_url ||
+      touched.status
     ) {
-      setIsDisabled(false);
-    } else {
-      setIsDisabled(true);
+      if (
+        !errors.name &&
+        !errors.description &&
+        !errors.start_date &&
+        !errors.end_date &&
+        !errors.banner_url &&
+        !errors.status
+      ) {
+        setIsDisabled(false);
+      } else {
+        setIsDisabled(true);
+      }
     }
-  }, [errors]);
+  }, [errors, touched]);
 
   return (
     <form className={customFormStyles}>
